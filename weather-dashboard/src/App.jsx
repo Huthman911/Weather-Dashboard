@@ -13,7 +13,7 @@ function App() {
     try {
       const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
       );
       setWeather(response.data);
       console.log("API Response:", response.data); 
