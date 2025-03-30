@@ -4,23 +4,10 @@ const ErrorMessage = ({ error }) => {
   if (!error) return null;
 
   return (
-    <div style={styles.errorBox}>
-      <p>⚠️ {error}</p>
+    <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded">
+      <p className="font-medium">⚠️ {error}</p>
     </div>
   );
-};
-
-const styles = {
-  errorBox: {
-    color: "red",
-    textAlign: "center",
-    backgroundColor: "#ffeeee",
-    padding: "10px",
-    borderRadius: "5px",
-    margin: "10px auto",
-    width: "80%",
-    border: "1px solid red",
-  },
 };
 
 export default ErrorMessage;

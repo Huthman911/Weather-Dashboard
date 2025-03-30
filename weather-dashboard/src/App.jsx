@@ -15,10 +15,12 @@ function App() {
 <div>
 
       <Router>
+      <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/weather/:city" element={<WeatherDetails />} />
       </Routes>
+      </div>
     </Router>
     </div>
     </>
