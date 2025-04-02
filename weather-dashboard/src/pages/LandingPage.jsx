@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import WeatherCard from "./WeatherCard"; 
-import ErrorMessage from "./ErrorMessage";
-import CityTimeDisplay from "./CityTimeDisplay";
+import WeatherCard from "../components/WeatherCard"; 
+import ErrorMessage from "../components/ErrorMessage";
+import CityTimeDisplay from "../components/CityTimeDisplay";
+import MenuBar from "../components/MenuBar";
 
 const randomCities = ["London", "New York", "Paris", "Tokyo", "Dubai"];
 
 const LandingPage = () => {
   const [randomWeather, setRandomWeather] = useState(null);
   const [city, setCity] = useState("");
+  const [searchHistory, setSearchHistory] = useState([]);
   const [error, setError] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,18 +36,42 @@ const LandingPage = () => {
     fetchRandomWeather();
   }, []);
 
+  useEffect(() => {
+    const storedHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    setSearchHistory(storedHistory);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (city.trim() === "") {
       setError("City name cannot be empty");
      return;
     }
+
+    const updatedHistory = [...new Set([city, ...searchHistory])].slice(0, 5); 
+    setSearchHistory(updatedHistory);
+    localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
+
     setError(null);
     navigate(`/weather/${city}`); 
   };
 
+  const handleHistoryClick = (city) => {
+    setCity(city);
+    navigate(`/weather/${city}`);
+  };
+
   return (
     <div className="container mx-auto px-4 sm:px-20 py-20 lg:px-9">
+
+
+
+     
+        <MenuBar 
+          
+        />
+     
+
       <h1 className="text-3xl font-bold text-center mb-5  text-gray-800">Weather Dashboard</h1>
       
       <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-2">

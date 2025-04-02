@@ -15,7 +15,7 @@ const CityTimeDisplay =({ cityName }) =>{
     });
 
     return (
-        <div className="p-10 mb-8   bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl">
+        <div className="p-10 mb-8   bg-gradient-to-r from-gray-500 to-black-600 text-white rounded-xl">
           <div className="flex items-center justify-between">
             {/* City Name Section */}
             <div className="flex items-center">

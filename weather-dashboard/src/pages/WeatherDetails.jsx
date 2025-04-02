@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import WeatherCard from "./WeatherCard";
-import ErrorMessage  from "./ErrorMessage"; 
+import WeatherCard from "../components/WeatherCard";
+import ErrorMessage  from "../components/ErrorMessage"; 
+import MenuBar from "../components/MenuBar";
 
 const WeatherDetails = () => {
   const { city } = useParams();
@@ -10,6 +11,7 @@ const WeatherDetails = () => {
   const [forecastData, setForecastData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
 
@@ -55,6 +57,11 @@ const WeatherDetails = () => {
   return (
     <div className="container mx-auto px-20 py-20">
       
+      
+            
+              <MenuBar
+              />
+            
       
       <ErrorMessage error={error} />
 
