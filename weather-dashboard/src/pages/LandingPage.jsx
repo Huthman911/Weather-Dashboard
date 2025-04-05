@@ -5,7 +5,7 @@ import WeatherCard from "../components/WeatherCard";
 import ErrorMessage from "../components/ErrorMessage";
 import CityTimeDisplay from "../components/CityTimeDisplay";
 import MenuBar from "../components/MenuBar";
-import {getWeatherIcon, WeatherIconSet } from "../components/WeatherIcons";
+
 
 const randomCities = ["London", "New York", "Paris", "Tokyo", "Dubai"];
 
@@ -65,19 +65,16 @@ const LandingPage = () => {
   return (
     <div className="container mx-auto px-4 sm:px-20 py-20 lg:px-9">
 
-
-
+     
         <MenuBar 
           
         />
-    
+     
+
       <h1 className="text-3xl font-bold text-center mb-5  text-gray-800">Weather Dashboard</h1>
       
       <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-2">
       <div className="flex">
-        <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-        <WeatherIconSet.navigation className="text-gray-400" />
-        </div>
         <input
           type="text" 
           placeholder="Enter city name"
@@ -90,24 +87,14 @@ const LandingPage = () => {
         <button type="submit" className="py-3 px-5 bg-black text-white rounded-xl hover:bg-gray-900 transition duration-200">Search</button>
 
       </form>
-      <h3 className="text-3xl font-semibold mb-4 text-gray-700 flex items-center justify-center gap-3">
-  <WeatherIconSet.sun className="text-yellow-400" />
-  Get real-time weather updates for your favorite city
-  <WeatherIconSet.cloud className="text-gray-500" />
-</h3>
-
+      <h3 classname="text-3xl font-semibold mb-4 text-gray-700">Get real-time weather updates for your favorite city.</h3>
 
       <ErrorMessage error={error} />
       
-      <CityTimeDisplay cityName={randomWeather.name} />
-
       {randomWeather && (
-        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden mt-6">
-        <div className="p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">Random City Weather</h2>
-         
-          </div>
-          
+        <div className="max-w-md mx-auto">
+          <h2 className="text-xl font-semibold mb-4">Random City Weather</h2>
+          <CityTimeDisplay cityName={randomWeather.name} />
  <WeatherCard weather={randomWeather} />
  </div>
  
