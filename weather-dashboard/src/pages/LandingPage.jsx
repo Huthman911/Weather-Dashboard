@@ -5,6 +5,7 @@ import WeatherCard from "../components/WeatherCard";
 import ErrorMessage from "../components/ErrorMessage";
 import CityTimeDisplay from "../components/CityTimeDisplay";
 import MenuBar from "../components/MenuBar";
+import {getWeatherIcon, WeatherIconSet } from "../components/WeatherIcons";
 
 const randomCities = ["London", "New York", "Paris", "Tokyo", "Dubai"];
 
@@ -76,6 +77,9 @@ const LandingPage = () => {
       
       <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-2">
       <div className="flex">
+        <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+        <WeatherIconSet.navigation className="text-gray-400" />
+        </div>
         <input
           type="text" 
           placeholder="Enter city name"
@@ -93,8 +97,32 @@ const LandingPage = () => {
       <ErrorMessage error={error} />
       
       {randomWeather && (
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
           <h2 className="text-xl font-semibold mb-4">Random City Weather</h2>
+          <div className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                {getWeatherIcon(randomWeather.weather[0].main, 36)}
+                <span className="ml-2 text-2xl font-bold">{randomWeather.name}</span>
+              </div>
+              <div className="text-right">
+                <p className="text-4xl font-bold">
+                {Math.round(randomWeather.main.temp)}°
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div className="flex items-center">
+                <WeatherIconSet.humidity className="text-blue-400 mr-2" />
+                <span>Humidity: {randomWeather.main.humidity}%</span>
+              </div>
+              <div className="fflex items-center">
+                <WeatherIconSet.wind className="text-gray-500 mr-2" />
+                <span>Wind: {randomWeather.wind.speed} km/h</span>
+              </div>
+            </div>
+          </div>
           <CityTimeDisplay cityName={randomWeather.name} />
  <WeatherCard weather={randomWeather} />
  </div>
