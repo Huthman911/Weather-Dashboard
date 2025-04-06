@@ -19,7 +19,7 @@ import {
     default: WiDayCloudy
   };
 
-  export const getWeatherIcon = (condition, size = 24, className = "") => {
+  export const getWeatherIcon = (condition, size = 50, className = "") => {
     const IconComponent = WeatherIcons[condition.toLowerCase()] || WeatherIcons.default;
     return <IconComponent size={size} className={`text-yellow-400 ${className}`} />;
   };

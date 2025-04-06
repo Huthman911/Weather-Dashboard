@@ -87,7 +87,22 @@ const LandingPage = () => {
         <button type="submit" className="py-3 px-5 bg-black text-white rounded-xl hover:bg-gray-900 transition duration-200">Search</button>
 
       </form>
-      <h3 classname="text-3xl font-semibold mb-4 text-gray-700">Get real-time weather updates for your favorite city.</h3>
+      <h3 className="text-3xl font-semibold mb-4 text-gray-700 flex items-center justify-center gap-3">
+  
+  <span className="w-19 h-14 text-yellow-500">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      className="w-full h-full"
+    >
+      <path d="M6.995 12c0-2.761 2.246-5 5.005-5a5 5 0 014.9 4.005 3.5 3.5 0 11.1 6.995H7.5a3.5 3.5 0 01-.505-6.995zM12 3a1 1 0 011 1v1.05a1 1 0 01-2 0V4a1 1 0 011-1zm7.071 1.929a1 1 0 010 1.414l-.743.743a1 1 0 01-1.414-1.414l.743-.743a1 1 0 011.414 0zM21 11a1 1 0 010 2h-1.05a1 1 0 010-2H21zM4 11a1 1 0 010 2H3a1 1 0 010-2h1zM5.636 5.636a1 1 0 011.414 0l.743.743A1 1 0 016.379 7.793l-.743-.743a1 1 0 010-1.414zM12 17a1 1 0 011 1v1.05a1 1 0 01-2 0V18a1 1 0 011-1z" />
+    </svg>
+  </span>
+
+  Get real-time weather updates for your favorite city.
+</h3>
+
 
       <ErrorMessage error={error} />
       
